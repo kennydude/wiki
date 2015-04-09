@@ -10,6 +10,8 @@ use kennydude\Wiki\Page;
 use kennydude\Wiki\Auth\User;
 use kennydude\Wiki\Config;
 
+require("src/util.php");
+
 define("BASE_DIR", str_repeat("../", count(explode("/", $_GET['page']))-1));
 
 // Setup Twig
@@ -38,8 +40,6 @@ function render($response, $template, $data){
 
     $response->setContent($twig->render($template, $data));
 }
-
-require("src/util.php");
 
 $user = User::get();
 $config = Config::get();
