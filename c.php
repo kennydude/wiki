@@ -4,6 +4,7 @@ require "vendor/autoload.php";
 error_reporting(E_ALL ^ E_NOTICE);
 
 use Symfony\Component\Yaml\Dumper;
+use kennydude\Wiki\Config;
 
 if (php_sapi_name() != "cli") {
     exit("E: c.php must be ran via the command line");
@@ -12,7 +13,7 @@ echo "simplewiki\n";
 echo "© kennydude 2014\n";
 
 if(file_exists("config.yml")){
-    require "src/config.php";
+    $config = Config::get();
 } else{
     echo "> config.yml does not exist!\n";
     $config = array(
