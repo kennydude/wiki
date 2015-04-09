@@ -1,0 +1,109 @@
+body{
+    background: #eee;
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+}
+*{
+    box-sizing: border-box;
+}
+.content{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.header{
+    background: #333;
+    color: #FFF;
+    padding: 10px;
+}
+.bigicon svg{
+    width: auto;
+    height: 300px;
+}
+.bigicon{
+    padding: 20px 0;
+}
+.header a{
+    color: #FFF;
+}
+.header .content{
+    display: flex;
+    align-items: center;
+}
+.header h1{
+    flex-grow: 1;
+}
+p{
+    font-size: 18px;
+    line-height: 1.4;
+}
+.footer{
+    padding: 10px;
+    background: #DDD;
+}
+
+#menu{
+    fill: #EEE;
+    width: 16px;
+    height: auto;
+    margin-left: -25px;
+    margin-right: 9px;
+}
+
+.drop{
+    position: fixed;
+    left:0;right:0;top:0;bottom:0;
+    background: rgba(0,0,0,0.5);
+    transition: opacity 1s ease;
+    opacity: 1;
+}
+.hidden{
+    opacity: 0;
+    display: none;
+}
+.sidebar{
+    width: 300px;
+    max-width: 80%;
+    background: #FFF;
+    height: 100%;
+    padding: 10px;
+    box-shadow: #333 0px 0px 10px;
+}
+pre{
+    overflow-y: scroll;
+    background: #DDD;
+    padding: 10px;
+    margin: 15px 0;
+}
+form{
+    padding: 25px 0;
+}
+label{
+    display: block;
+    margin-bottom: 12px;
+    font-size: 25px;
+    display: flex;
+    width: 100%;
+}
+label span{
+    min-width: 150px;
+}
+input{
+    flex-grow: 1;
+}
+button{
+    font-size: 20px;
+}
+.error{
+    background: #FF6666;
+}
+.message{
+    padding: 15px;
+    margin: 10px -15px;
+}
+img{
+    width: 100%;
+}
+hr{
+    border: 0;
+    border-bottom: 1px solid #CCC;
+}

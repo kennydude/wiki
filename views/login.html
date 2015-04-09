@@ -1,0 +1,24 @@
+{% extends "master.html" %}
+{% set title="login" %}
+{% block content %}
+    {% if error %}
+    <p class="message error">
+        {{ error }}
+    </p>
+    {% endif %}
+    <p class="message">
+        Cookies will be enabled past this point. By logging in you are
+        giving consent to this wiki placing a cookie on your computer.
+    </p>
+    <form method="post" action="login">
+        <label>
+            <span>Username:</span>
+            <input type="text" name="username" />
+        </label>
+        <label>
+            <span>Password:</span>
+            <input type="password" name="password" />
+        </label>
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

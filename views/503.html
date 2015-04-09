@@ -1,0 +1,10 @@
+{% extends "master.html" %}
+{% set title="503" %}
+{% set credits %}<p><a href="http://thenounproject.com/term/sad/14699/">Sad icon</a> by Austin Condiff</p>{% endset %}
+
+{% block content %}
+    {% include "sad_face.html" %}
+
+    <p>This wiki is having technical difficulties!</p>
+    <pre>{{ error }}</pre>
+{% endblock %}

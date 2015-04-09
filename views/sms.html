@@ -1,0 +1,23 @@
+{% extends "master.html" %}
+{% block page %}
+  <h1>{{ title }}</h1>
+  <ul class="sms">
+    {% for line in chat %}
+      <li>
+          <span class="name">{{line.from}}</span>
+          <blockquote>{{line.message}}</blockquote>
+          <img class="image" src="{{line.photo}}" />
+      </li>
+    {% endfor %}
+</ul>
+
+<div class="styleSelector">
+  Style:
+  <select id="style">
+    {% for style in styles %}
+    <option value="{{style}}">{{style}}</option>
+    {% endfor %}
+  </select>
+</style>
+<script type="text/javascript" src="assets/sms.js"></script>
+{% endblock %}
