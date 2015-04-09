@@ -34,15 +34,13 @@ function render($response, $template, $data){
     $sidebar = new Page("Sidebar");
     $data['sidebar'] = $sidebar->toHTML();
 
-    if(LOGGED_IN){
-        $data['user'] = $user;
-    }
+    $data['user'] = $user;
 
     $response->setContent($twig->render($template, $data));
 }
 
-$user = User::get();
 $config = Config::get();
+$user = User::get();
 
 $router->addRoute('GET', '/assets/{asset:.+}.css', function(Request $request, Response $response, $args){
     $parser = new Less_Parser();

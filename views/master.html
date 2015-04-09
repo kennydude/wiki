@@ -24,7 +24,7 @@
             <a href=".">wiki</a>: {{ title }}
         </h1>
         <div class="ubox">
-            {% if user %}
+            {% if not user.is_guest %}
             hi {{ user.username }}
             {% else %}
             <a href="login">Login</a>
