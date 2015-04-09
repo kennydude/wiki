@@ -39,6 +39,16 @@ require("src/util.php");
 require("src/config.php");
 require("src/auth.php");
 
+$router->addRoute('GET', '/assets/{asset:.+}.css', function(Request $request, Response $response, $args){
+    $parser = new Less_Parser();
+    $parser->parseFile( 'assets/' . $args['asset'] . '.less', 'assets/' );
+    $css = $parser->getCss();
+    $response->setContent($css);
+    $response->headers->set('Content-Type', 'text/css');
+
+    return $response;
+});
+
 $router->addRoute('GET', '/pages/', function(Request $request, Response $response){
 
     $pages = Page::get_all_pages();

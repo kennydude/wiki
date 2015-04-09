@@ -33,4 +33,3 @@ These extra formats can be found in the [docs](docs).
 
 - Move auth/config to classes and make them autoloaded
 - Editor on the web (maybe)
-- Slim down the YAML front formatter

@@ -23,7 +23,11 @@ class Sms extends BaseRenderer {
 
         // Get styles
         $styles = array();
-        foreach(glob("assets/sms/*.css") as $style){
+        $s = array_merge(
+            glob("assets/sms/*.css"),
+            glob("assets/sms/*.less")
+        );
+        foreach($s as $style){
             $styles[] = substr($style, 11, strrpos($style, ".")-11);
         }
 

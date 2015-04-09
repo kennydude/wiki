@@ -2,7 +2,8 @@
 RewriteEngine On
 
 # Short url for wiki pages
-RewriteCond %{REQUEST_FILENAME} !assets
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ page.php?page=$1 [L,QSA]
 
 RewriteRule ^$ page.php [L]

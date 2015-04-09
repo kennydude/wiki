@@ -1,12 +1,12 @@
 <?php
 namespace kennydude\Wiki;
 
-use Mni\FrontYAML\Parser;
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
 use kennydude\Wiki\ImageUrlProcessor;
 use kennydude\Wiki\Render\Wiki;
+use Symfony\Component\Yaml\Parser;
 
 class Page {
     public function __construct($pagename){
@@ -21,20 +21,25 @@ class Page {
     }
 
     public function render($response){
-        $parser = new Parser();
-        $document = $parser->parse($this->contents(), false);
+        if(stripos($this->contents(), "---") === 0){
+            $yaml = substr($this->contents, 4);
+            $end = stripos($yaml, "---");
+            $yaml = substr($yaml, 0, $end);
 
-        $yaml = $document->getYAML();
-        if($yaml == NULL){
-            Wiki::render($response, $this, $yaml);
-        } else{
-            $this->contents = $document->getContent();
+            $parser = new Parser();
+            $yaml = $parser->parse($yaml);
+
+            $this->contents = substr($this->contents, $end+8);
+
             if(!$yaml['type']){
                 Wiki::render($response, $this, $yaml);
             } else{
                 $type = ucwords($yaml['type']);
                 call_user_func("kennydude\Wiki\Render\\$type::render", $response, $this, $yaml);
             }
+
+        } else {
+          Wiki::render($response, $this, $yaml);
         }
     }
 

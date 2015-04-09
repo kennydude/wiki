@@ -1,5 +1,7 @@
+@background: #3D9970;
+
 body{
-  background: #3D9970;
+  background: @background;
   color: #FFF;
   padding: 30px 5px;
 }
@@ -34,6 +36,9 @@ blockquote{
   margin-left: 80px;
   padding: 10px;
 }
+
+/* thanks to http://nicolasgallagher.com/pure-css-speech-bubbles/demo/ :) */
+
 blockquote::before {
   content: "";
   position: absolute;
@@ -56,7 +61,7 @@ blockquote::after {
   height: 30px;
   border-bottom-right-radius: 24px 47px;
   transform: translate(-30px, -2px);
-  background: none repeat scroll 0% 0% #3D9970;
+  background: none repeat scroll 0% 0% @background;
   left: 85px;
   bottom: 14px;
 }
