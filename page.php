@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use kennydude\Wiki\Page;
+use kennydude\Wiki\Auth\User;
+use kennydude\Wiki\Config;
 
 define("BASE_DIR", str_repeat("../", count(explode("/", $_GET['page']))-1));
 
@@ -16,10 +18,12 @@ $twig = new Twig_Environment($loader, array(
     #"cache" => "caches/twig",
 ));
 
+// Load Router
 $container = new League\Container\Container();
 $container->add('Symfony\Component\HttpFoundation\Request', Request::createFromGlobals());
 $router = new League\Route\RouteCollection($container);
 
+// Simple global render function
 function render($response, $template, $data){
     global $twig, $user;
 
@@ -36,8 +40,9 @@ function render($response, $template, $data){
 }
 
 require("src/util.php");
-require("src/config.php");
-require("src/auth.php");
+
+$user = User::get();
+$config = Config::get();
 
 $router->addRoute('GET', '/assets/{asset:.+}.css', function(Request $request, Response $response, $args){
     $parser = new Less_Parser();
@@ -98,6 +103,35 @@ $router->addRoute('GET', '/images/{key}', function(Request $request, Response $r
         render($response, "nopage.html", array());
         $response->setStatusCode(404);
     }
+    return $response;
+});
+
+$router->addRoute('GET', '/login', function(Request $request, Response $response){
+    render($response, "login.html", array());
+    return $response;
+});
+
+$router->addRoute('POST', '/login', function(Request $request, Response $response){
+    global $config;
+    $error = null;
+
+    if($config['users'][$request->request->get("username")]){
+        $user = $config['users'][$request->request->get("username")];
+        if(password_verify($request->request->get("password"), $user['password'])){
+            session_start();
+            $_SESSION['ww_user'] = array(
+                "username" => $request->request->get("username")
+            );
+            $response->setStatusCode(302);
+            $response->headers->set("Location", "pages/Home");
+        } else{
+            $error = "Invalid password";
+        }
+    } else{
+        $error = "Invalid username";
+    }
+
+    render($response, "login.html", array( "error" => $error ));
     return $response;
 });
 

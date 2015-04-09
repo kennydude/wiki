@@ -3,9 +3,6 @@
 This is a simple wiki I made to store notes etc. It's written in PHP because
 I tend to keep a web server running on my Mac and PHP runs on there.
 
-Currently it's moving to be more "PHP the right way" but some stuff
-(auth/config) isn't there just yet.
-
 ## Get started
 
 1. Clone repo
@@ -31,5 +28,4 @@ These extra formats can be found in the [docs](docs).
 
 ## TODO
 
-- Move auth/config to classes and make them autoloaded
 - Editor on the web (maybe)
