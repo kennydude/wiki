@@ -1,0 +1,141 @@
+@background: #FFF;
+@fromBubble: #DDDDE3;
+@toBubble: #56C93A;
+@toText: #FFF;
+@width: 500px;
+@headerColor: #F5F5F5;
+@linkColor: #4789F0;
+@headerPad: 12px;
+
+body{
+  background: @background;
+  padding: 30px 5px;
+}
+*{
+  font-family: "Helvetica Neue", "Helvetica", "Lucidia Grande", sans-serif;
+  box-sizing: border-box;
+}
+h1{
+  text-align: center;
+  margin-bottom: 50px;
+}
+h1:after{
+  content: "●●●●● SMS";
+  position: absolute;
+  top: 125px;
+  width: @width;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: left;
+  padding: 5px @headerPad 0px @headerPad;
+  background: @headerColor;
+  z-index: 1;
+  box-sizing: border-box;
+}
+h2{
+  max-width: @width;
+  margin: 0 auto;
+  padding: 15px;
+  text-align: center;
+  background: @headerColor;
+  font-size: 17px;
+  margin-bottom: 15px;
+  position: relative;
+}
+h2:before{
+  content: "  Messages";
+  position: absolute;
+  left: @headerPad;
+  background: url(back.svg) no-repeat left center;
+  padding-left: 20px;
+}
+h2:after{
+  content: "Details";
+  position: absolute;
+  right: @headerPad;
+}
+h2:before, h2:after{
+  color: @linkColor;
+  font-weight: normal;
+}
+ul{
+  padding: 0;
+  max-width: @width;
+  margin: 0 auto;
+}
+li{
+  list-style-type: none;
+  position: relative;
+  margin-bottom: 3px;
+}
+.image, .name{
+  display: none;
+}
+
+blockquote{
+  background: @fromBubble;
+  border-radius: 15px;
+  display: inline-block;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+/* thanks to http://nicolasgallagher.com/pure-css-speech-bubbles/demo/ :) */
+
+blockquote::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  height: 15px;
+  background: none repeat scroll 0% 0% @fromBubble;
+  border-bottom-right-radius: 15px;
+  transform: translate(0px, -2px);
+  border-right: 30px solid @fromBubble;
+  bottom: 0;
+  left: -10px;
+}
+
+.chat2 blockquote::before{
+  background-color: @toBubble;
+  right: -10px;
+  left: inherit;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 0;
+  border-left: 30px solid @toBubble;
+  border-right: 0px;
+}
+.chat2 blockquote::after{
+  left: inherit;
+  right: -45px;
+  border-bottom-left-radius: 24px 47px;
+  border-bottom-right-radius: 0;
+}
+.chat2 blockquote{
+  background: @toBubble;
+  color: @toText;
+}
+.chat2{
+  text-align: right;
+}
+
+/* creates smaller curve */
+blockquote::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 29px;
+  height: 30px;
+  border-bottom-right-radius: 24px 47px;
+  transform: translate(-30px, -2px);
+  background: none repeat scroll 0% 0% @background;
+  left: 15px;
+  bottom: 0;
+}
+
+.styleSelector{
+  margin-top: 60px;
+  text-align: center;
+}

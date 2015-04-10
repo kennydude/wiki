@@ -1,9 +1,10 @@
 {% extends "master.html" %}
 {% block page %}
   <h1>{{ title }}</h1>
+  <h2>{{name}}</h2>
   <ul class="sms">
     {% for line in chat %}
-      <li>
+      <li class="chat{{line.class}}">
           <span class="name">{{line.from}}</span>
           <blockquote>{{line.message}}</blockquote>
           <img class="image" src="{{line.photo}}" />

@@ -44,7 +44,7 @@ $user = User::get();
 
 $router->addRoute('GET', '/assets/{asset:.+}.css', function(Request $request, Response $response, $args){
     $parser = new Less_Parser();
-    $parser->parseFile( 'assets/' . $args['asset'] . '.less', 'assets/' );
+    $parser->parseFile( 'assets/' . $args['asset'] . '.less' );
     $css = $parser->getCss();
     $response->setContent($css);
     $response->headers->set('Content-Type', 'text/css');

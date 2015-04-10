@@ -9,15 +9,28 @@ class Sms extends BaseRenderer {
         $chat = explode("\n", $page->contents());
 
         // Parse "sms" chat thing
+        $classes = array();
+        $upto = 0;
+        $name = "";
         foreach($chat as $line){
             if(trim($line) == "") continue;
 
             $from = substr($line, 0, stripos($line, ":"));
             $msg = substr($line, stripos($line, ":")+1);
+            if(!$classes[$from]){
+                $upto += 1;
+                $classes[$from] = $upto;
+                if($upto == 1){
+                    $name = $from;
+                }
+            }
+            $class = $classes[$from];
+
             $lines[] = array(
                 "from" => $from,
                 "message" => $msg,
-                "photo" => $page->get_image_url($yaml[$from])
+                "photo" => $page->get_image_url($yaml[$from]),
+                "class" => $class
             );
         }
 
@@ -34,6 +47,7 @@ class Sms extends BaseRenderer {
         render($response, "sms.html", array(
             "chat" => $lines,
             "styles" => $styles,
+            "name" => $name,
             "title" => $page->nice_name()
         ));
     }
