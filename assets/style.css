@@ -55,6 +55,7 @@ p{
     background: rgba(0,0,0,0.5);
     transition: opacity 1s ease;
     opacity: 1;
+    z-index: 999999;
 }
 .hidden{
     opacity: 0;
@@ -67,6 +68,7 @@ p{
     height: 100%;
     padding: 10px;
     box-shadow: #333 0px 0px 10px;
+    z-index: 9999999;
 }
 pre{
     overflow-y: scroll;
