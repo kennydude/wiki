@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="assets/gallery.css" />
+{% endblock %}
+{% block main %}
+<div class="gallery">
+
+  <h1>{{ title }}</h1>
+  <ul class="gallery">
+    {% for image in images %}
+      <li>
+          <img class="image" src="{{image}}" />
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}

@@ -35,7 +35,13 @@ class Page {
                 Wiki::render($response, $this, $yaml);
             } else{
                 $type = ucwords($yaml['type']);
-                call_user_func("kennydude\Wiki\Render\\$type::render", $response, $this, $yaml);
+                $func = "kennydude\Wiki\Render\\$type::render";
+                if(!is_callable($func)){
+                    // No renderer found
+                    Wiki::render($response, $this, $yaml);
+                } else{
+                    call_user_func($func, $response, $this, $yaml);
+                }
             }
 
         } else {
