@@ -6,7 +6,7 @@
     {% for line in chat %}
       <li class="chat{{line.class}}">
           <span class="name">{{line.from}}</span>
-          <blockquote>{{line.message}}</blockquote>
+          <blockquote><p>{{line.message}}</p></blockquote>
           <img class="image" src="{{line.photo}}" />
       </li>
     {% endfor %}
@@ -19,6 +19,6 @@
     <option value="{{style}}">{{style}}</option>
     {% endfor %}
   </select>
-</style>
+</div>
 <script type="text/javascript" src="assets/sms.js"></script>
 {% endblock %}
