@@ -8,7 +8,13 @@
     {% for line in chat %}
       <li class="chat{{line.class}}">
           <span class="name">{{line.from}}</span>
-          <blockquote><p>{{line.message}}</p></blockquote>
+          <blockquote class="{% if line.image %}photo{% else %}text{% endif %}">
+              {% if line.image %}
+              <img src="{{ line.image }}" class="img" />
+              {% else %}
+              <p>{{line.message}}</p>
+              {% endif %}
+          </blockquote>
           <img class="image" src="{{line.photo}}" />
       </li>
     {% endfor %}

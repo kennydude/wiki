@@ -17,7 +17,7 @@ body{
   font-family: "Helvetica Neue", "Helvetica", "Lucidia Grande", sans-serif;
   box-sizing: border-box;
 }
-    .sms{
+.sms{
     h1{
       text-align: center;
       margin-bottom: 50px;
@@ -79,14 +79,36 @@ body{
       display: none;
     }
 
-    blockquote{
+    blockquote.text{
       background: @fromBubble;
       border-radius: 15px;
       display: inline-block;
       padding: 10px;
+      max-width: 60%;
       margin: 0 10px;
     }
     .chat2{
       text-align: right;
+    }
+
+    blockquote.photo{
+        padding: 0; margin: 0;
+    }
+    .chat2 img.img{
+        float: right;
+    }
+
+    img.img{
+        margin: 0 10px;
+        border-radius: 15px;
+        width: 60%;
+        display: block;
+    }
+
+    .chat1 + .chat2{
+        margin-top: 10px;
+    }
+    .chat2 + .chat1{
+        margin-top: 10px;
     }
 }

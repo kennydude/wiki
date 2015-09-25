@@ -11,7 +11,7 @@
 
 /* thanks to http://nicolasgallagher.com/pure-css-speech-bubbles/demo/ :) */
 
-blockquote::before {
+blockquote.text::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -24,7 +24,7 @@ blockquote::before {
   left: -10px;
 }
 
-.chat2 blockquote::before{
+.chat2 blockquote.text::before{
   background-color: @toBubble;
   right: -10px;
   left: inherit;
@@ -33,13 +33,13 @@ blockquote::before {
   border-left: 30px solid @toBubble;
   border-right: 0px;
 }
-.chat2 blockquote::after{
+.chat2 blockquote.text::after{
   left: inherit;
   right: -45px;
   border-bottom-left-radius: 24px 47px;
   border-bottom-right-radius: 0;
 }
-.chat2 blockquote{
+.chat2 blockquote.text{
   background: @toBubble;
   color: @toText;
 }

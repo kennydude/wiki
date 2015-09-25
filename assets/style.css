@@ -27,6 +27,7 @@ body{
 }
 .header .content{
     display: flex;
+    -webkit-display: flex;
     align-items: center;
 }
 .header h1{
@@ -91,6 +92,7 @@ label span{
 }
 input{
     flex-grow: 1;
+    -webkit-flex-grow: 1;
 }
 button{
     font-size: 20px;
